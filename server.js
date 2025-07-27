@@ -54,7 +54,7 @@ const marketRoutes = require('./routes/markets');
 
 // API routes
 app.use('/api/users', userRoutes);
-app.use('/api/Markets', marketRoutes);
+app.use('/api/markets', marketRoutes);
 
 // Status endpoint
 app.get('/api/status', (req, res) => {
