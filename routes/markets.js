@@ -121,37 +121,6 @@ const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
 const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
 const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
-// 🔐 Get session token from Betfair login API
-async function getSessionToken() {
-  const loginUrl = 'https://identitysso.betfair.com/api/login';
-
-  const payload = new URLSearchParams({
-    username: USERNAME,
-    password: PASSWORD
-  });
-
-  try {
-    const response = await axios.post(loginUrl, payload, {
-      headers: {
-        'X-Application': APP_KEY,
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
-    });
-
-    if (response.data.status === 'SUCCESS') {
-      console.log('✅ Logged in to Betfair');
-      return response.data.token;
-    } else {
-      console.error('❌ Login failed:', response.data);
-      throw new Error('Login failed: ' + response.data.error);
-    }
-  } catch (error) {
-    console.error('❌ Login Error:', error.message);
-    throw error;
-  }
-}
-
-// 🚀 Fetch live markets (auto-login)
 
 
 
@@ -163,7 +132,7 @@ async function getSessionToken() {
 
 router.get('/live/cricket', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🎯 Step: List upcoming cricket events with start time
     const eventsResponse = await axios.post(
@@ -218,7 +187,7 @@ router.get('/live/cricket', async (req, res) => {
 
   router.get('/live/football', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🎯 Step: List upcoming football events with start time
     const eventsResponse = await axios.post(
@@ -270,7 +239,7 @@ router.get('/live/cricket', async (req, res) => {
 });
 router.get('/live/tennis', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     const eventsResponse = await axios.post(
       'https://api.betfair.com/exchange/betting/json-rpc/v1',
@@ -329,7 +298,7 @@ router.get('/live/tennis', async (req, res) => {
 
 router.get('/live/horse', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🐎 Step: List upcoming horse racing events with start time
     const eventsResponse = await axios.post(
@@ -381,7 +350,7 @@ router.get('/live/horse', async (req, res) => {
 });
 router.get('/live/greyhound', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🐶 Step: List upcoming greyhound racing events with start time
     const eventsResponse = await axios.post(
