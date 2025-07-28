@@ -15,7 +15,7 @@ const PORT = process.env.PORT || config.api.port || 5000;
 
 // Middleware
 app.use(cors({
-  origin: 'https://www.nonalexch.com',
+  origin: 'http://localhost:8000',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
