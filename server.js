@@ -14,8 +14,19 @@ const app = express();
 const PORT = process.env.PORT || config.api.port || 5000;
 
 // Middleware
+const allowedOrigins = [
+  'https://nonalexch.com',
+  'https://www.nonalexch.com'
+];
 app.use(cors({
-  origin: 'https://www.nonalexch.com',
+  origin: function (origin, callback) {
+    // Agar origin allowed list me hai ya request bina origin ke hai (postman/thunderclient)
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('CORS not allowed for this origin'));
+    }
+  },
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true
