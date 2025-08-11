@@ -138,69 +138,39 @@ const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
 // 🚀 Fetch live markets for multiple sports
 
-async function getSessionToken() {
-  try {
-    const response = await axios.post(
-      'https://identitysso.betfair.com/api/login',
-      new URLSearchParams({
-        username: USERNAME,
-        password: PASSWORD
-      }),
-      {
-        headers: {
-          'X-Application': APP_KEY,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        }
-      }
-    );
+// async function getSessionToken() {
+//   try {
+//     const response = await axios.post(
+//       'https://identitysso.betfair.com/api/login',
+//       new URLSearchParams({
+//         username: USERNAME,
+//         password: PASSWORD
+//       }),
+//       {
+//         headers: {
+//           'X-Application': APP_KEY,
+//           'Content-Type': 'application/x-www-form-urlencoded'
+//         }
+//       }
+//     );
 
-    const data = response.data;
+//     const data = response.data;
 
-    if (data.status === 'SUCCESS') {
-      return data.token;
-    } else {
-      throw new Error(`Login failed: ${data.error}`);
-    }
-  } catch (err) {
-    console.error('❌ Failed to login to Betfair:', err.message);
-    throw err;
-  }
-}
-async function testBetfairAPI() {
-  const token = await getSessionToken();
-  if (!token) {
-    console.log('❌ Token fetch failed');
-    return;
-  }
+//     if (data.status === 'SUCCESS') {
+//       return data.token;
+//     } else {
+//       throw new Error(`Login failed: ${data.error}`);
+//     }
+//   } catch (err) {
+//     console.error('❌ Failed to login to Betfair:', err.message);
+//     throw err;
+//   }
+// }
 
-  try {
-    const res = await axios.post(
-      'https://api.betfair.com/exchange/betting/rest/v1.0/listEventTypes/',
-      { filter: {} },
-      {
-        headers: {
-          'Content-Type': 'application/json',
-          'X-Application': APP_KEY,
-          'X-Authentication': token
-        }
-      }
-    );
-    console.log('✅ API Response:', res.data);
-  } catch (err) {
-    console.error('❌ API Error:', {
-      status: err.response?.status,
-      statusText: err.response?.statusText,
-      data: err.response?.data,
-      headers: err.response?.headers
-    });
-  }
-}
-
-testBetfairAPI();
 // 🎯 Fetch live cricket markets only
 router.get('/live/cricket', async (req, res) => {
   try {
-    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // 🎯 Step 1: Get cricket events
     const eventsResponse = await axios.post(
@@ -345,7 +315,7 @@ const finalData = marketCatalogues.map(market => {
 
 router.get('/live/football', async (req, res) => {
   try {
-    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // 🎯 Step 1: Get football events
     const eventsResponse = await axios.post(
@@ -488,7 +458,7 @@ router.get('/live/football', async (req, res) => {
 });
 router.get('/live/sports/:id', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // If /live/sports/:id, get single marketId
     const singleMarketId = req.params.id;
@@ -666,7 +636,7 @@ router.get('/live/sports/:id', async (req, res) => {
 
 router.get('/live/tennis', async (req, res) => {
   try {
-    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // Step 1: Get tennis events
     const eventsResponse = await axios.post(
@@ -815,7 +785,7 @@ router.get('/live/tennis', async (req, res) => {
 
 router.get('/live/horse', async (req, res) => {
   try {
-    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // 🐎 Step 1: Get horse racing events
     const eventsResponse = await axios.post(
@@ -974,7 +944,7 @@ router.get('/catalog2', async (req, res) => {
       return res.status(400).json({ error: "marketId is required in query parameters" });
     }
 
-    const token = await getSessionToken();
+    const token = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     const headers = {
       'X-Application': APP_KEY,
@@ -1167,7 +1137,7 @@ router.get('/Data', async (req, res) => {
   }
 
   try {
-    const token = await getSessionToken();
+    const token = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
     const headers = {
       'X-Application': APP_KEY,
       'X-Authentication': token,
@@ -1267,7 +1237,7 @@ router.get('/Data', async (req, res) => {
 
 router.get('/live/greyhound', async (req, res) => {
   try {
-    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // 🐕 Step 1: Get greyhound racing events (AU & GB only)
     const eventsResponse = await axios.post(
@@ -1420,7 +1390,7 @@ const sportName = req.params.sport.toLowerCase();
   }
 
   try {
-    const token = await getSessionToken();
+    const token = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     const headers = {
       'X-Application': APP_KEY,
@@ -1499,7 +1469,7 @@ const sportName = req.params.sport.toLowerCase();
 router.get('/scorecard/:marketId', async (req, res) => {
   try {
     const { marketId } = req.params;
-    const sessionToken = await getSessionToken();
+    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
 
     // ⚠️ Betfair me scorecard ke liye actual endpoint chahiye hoga
     const response = await axios.post(
