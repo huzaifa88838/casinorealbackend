@@ -19,6 +19,7 @@ const allowedOrigins = [
   'https://www.nonalexch.com'
 ];
 app.use(cors({
+<<<<<<< HEAD
   origin: function (origin, callback) {
     // Agar origin allowed list me hai ya request bina origin ke hai (postman/thunderclient)
     if (!origin || allowedOrigins.includes(origin)) {
@@ -27,6 +28,9 @@ app.use(cors({
       callback(new Error('CORS not allowed for this origin'));
     }
   },
+=======
+  origin: 'http://localhost:8000',
+>>>>>>> 5238f3e31bf475efdb63b18b1c900bce1daadc06
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   credentials: true

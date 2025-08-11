@@ -122,6 +122,15 @@ const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
 const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
 const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
+<<<<<<< HEAD
+=======
+// 🔐 Get session token from Betfair login API
+
+
+  
+
+// 🚀 Fetch live markets (auto-login)
+>>>>>>> 5238f3e31bf475efdb63b18b1c900bce1daadc06
 
 
 
@@ -159,7 +168,7 @@ async function getSessionToken() {
 // 🎯 Fetch live cricket markets only
 router.get('/live/cricket', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🎯 Step 1: Get cricket events
     const eventsResponse = await axios.post(
@@ -304,7 +313,7 @@ const finalData = marketCatalogues.map(market => {
 
 router.get('/live/football', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🎯 Step 1: Get football events
     const eventsResponse = await axios.post(
@@ -625,7 +634,7 @@ router.get('/live/sports/:id', async (req, res) => {
 
 router.get('/live/tennis', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // Step 1: Get tennis events
     const eventsResponse = await axios.post(
@@ -774,7 +783,7 @@ router.get('/live/tennis', async (req, res) => {
 
 router.get('/live/horse', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🐎 Step 1: Get horse racing events
     const eventsResponse = await axios.post(
@@ -1226,7 +1235,7 @@ router.get('/Data', async (req, res) => {
 
 router.get('/live/greyhound', async (req, res) => {
   try {
-    const sessionToken = await getSessionToken();
+    const sessionToken = "OWBHiLNBwsPchZofFWqPbshyeaKoTaoe0f/VR144+2E=";
 
     // 🐕 Step 1: Get greyhound racing events (AU & GB only)
     const eventsResponse = await axios.post(
