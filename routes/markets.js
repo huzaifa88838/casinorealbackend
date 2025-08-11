@@ -8,6 +8,8 @@ const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
 const config = require('../config');
+const axios = require('axios'); // Yeh neeche likha hua hai
+
 // Mock data for popular markets (fallback)
 const mockPopularMarkets = [
   {
@@ -116,7 +118,6 @@ router.get('/popular', async (req, res) => {
  * @desc    Get specific market by ID
  * @access  Public
  */
-// const axios = require('axios');
 
 const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
 const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
@@ -1619,7 +1620,6 @@ router.get('/:marketId', async (req, res) => {
 
 // const express = require('express');
 // const router = express.Router();
-const axios = require('axios');
 
 // ✅ Replace with your real App Key and Session Token
 
