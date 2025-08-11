@@ -143,7 +143,18 @@ const APP_KEY = process.env.BETFAIR_APP_KEY
 
 // 🚀 Fetch live markets for multiple sports
 
+let cachedSessionToken = null;
+let tokenExpiryTime = null;  // timestamp jab token expire ho jayega
+
 async function getSessionToken() {
+  const now = Date.now();
+
+  // Agar token exist karta hai aur expire nahi hua
+  if (cachedSessionToken && tokenExpiryTime && now < tokenExpiryTime) {
+    return cachedSessionToken;
+  }
+
+  // Naya token generate karo
   try {
     const response = await axios.post(
       'https://identitysso.betfair.com/api/login',
@@ -162,7 +173,14 @@ async function getSessionToken() {
     const data = response.data;
 
     if (data.status === 'SUCCESS') {
-      return data.token;
+      cachedSessionToken = data.token;
+
+      // Token ki expiry approx 30 mins hoti hai, aap Betfair docs check karen
+      tokenExpiryTime = now + 29 * 60 * 1000; // 29 minutes baad expire kar do
+
+      console.log('New session token generated');
+
+      return cachedSessionToken;
     } else {
       throw new Error(`Login failed: ${data.error}`);
     }
