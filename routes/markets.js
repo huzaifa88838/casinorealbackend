@@ -119,13 +119,13 @@ router.get('/popular', async (req, res) => {
  * @access  Public
  */
 
-const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
-const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
-const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
+// const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
+// const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
+// const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
-// const USERNAME = process.env.BETFAIR_USERNAME
-// const PASSWORD = process.env.BETFAIR_PASSWORD
-// const APP_KEY = process.env.BETFAIR_APP_KEY
+const USERNAME = process.env.BETFAIR_USERNAME
+const PASSWORD = process.env.BETFAIR_PASSWORD
+const APP_KEY = process.env.BETFAIR_APP_KEY
 // console.log('Username:', USERNAME);
 // console.log('Password:', PASSWORD ? '******' : 'No Password');
 // console.log('App Key:', APP_KEY);
