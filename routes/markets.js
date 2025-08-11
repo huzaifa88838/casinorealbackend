@@ -122,8 +122,8 @@ const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
 const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
 const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
-<<<<<<< HEAD
-=======
+
+
 // 🔐 Get session token from Betfair login API
 
 
@@ -131,7 +131,6 @@ const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
 // 🚀 Fetch live
 //  markets (auto-login)
->>>>>>> 5238f3e31bf475efdb63b18b1c900bce1daadc06
 
 
 
