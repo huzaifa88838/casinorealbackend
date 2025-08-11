@@ -123,9 +123,14 @@ const APP_KEY = '8sCvSYczC1qAr27v'; // ✅ your actual Betfair App Key
 const USERNAME = 'latifsohu@hotmail.com'; // ✅ your Betfair username
 const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
+// const USERNAME = process.env.BETFAIR_USERNAME
+// const PASSWORD = process.env.BETFAIR_PASSWORD
+// const APP_KEY = process.env.BETFAIR_APP_KEY
+// console.log('Username:', USERNAME);
+// console.log('Password:', PASSWORD ? '******' : 'No Password');
+// console.log('App Key:', APP_KEY);
 
-
-// 🔐 Get session token from Betfair login API
+// // 🔐 Get session token from Betfair login API
 
 
   
@@ -138,39 +143,39 @@ const PASSWORD = 'Bahria@2026'; // ✅ your Betfair password
 
 // 🚀 Fetch live markets for multiple sports
 
-// async function getSessionToken() {
-//   try {
-//     const response = await axios.post(
-//       'https://identitysso.betfair.com/api/login',
-//       new URLSearchParams({
-//         username: USERNAME,
-//         password: PASSWORD
-//       }),
-//       {
-//         headers: {
-//           'X-Application': APP_KEY,
-//           'Content-Type': 'application/x-www-form-urlencoded'
-//         }
-//       }
-//     );
+async function getSessionToken() {
+  try {
+    const response = await axios.post(
+      'https://identitysso.betfair.com/api/login',
+      new URLSearchParams({
+        username: USERNAME,
+        password: PASSWORD
+      }),
+      {
+        headers: {
+          'X-Application': APP_KEY,
+          'Content-Type': 'application/x-www-form-urlencoded'
+        }
+      }
+    );
 
-//     const data = response.data;
+    const data = response.data;
 
-//     if (data.status === 'SUCCESS') {
-//       return data.token;
-//     } else {
-//       throw new Error(`Login failed: ${data.error}`);
-//     }
-//   } catch (err) {
-//     console.error('❌ Failed to login to Betfair:', err.message);
-//     throw err;
-//   }
-// }
+    if (data.status === 'SUCCESS') {
+      return data.token;
+    } else {
+      throw new Error(`Login failed: ${data.error}`);
+    }
+  } catch (err) {
+    console.error('❌ Failed to login to Betfair:', err.message);
+    throw err;
+  }
+}
 
 // 🎯 Fetch live cricket markets only
 router.get('/live/cricket', async (req, res) => {
   try {
-    const sessionToken = "7cJ1B9qC2VOUGQHhzwxcDuNEP90ovsJmWBcRmJDRpuU=";
+    const sessionToken = await getSessionToken();
 
     // 🎯 Step 1: Get cricket events
     const eventsResponse = await axios.post(
