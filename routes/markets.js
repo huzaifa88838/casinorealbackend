@@ -165,6 +165,37 @@ async function getSessionToken() {
     throw err;
   }
 }
+async function testBetfairAPI() {
+  const token = await getSessionToken();
+  if (!token) {
+    console.log('❌ Token fetch failed');
+    return;
+  }
+
+  try {
+    const res = await axios.post(
+      'https://api.betfair.com/exchange/betting/rest/v1.0/listEventTypes/',
+      { filter: {} },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Application': APP_KEY,
+          'X-Authentication': token
+        }
+      }
+    );
+    console.log('✅ API Response:', res.data);
+  } catch (err) {
+    console.error('❌ API Error:', {
+      status: err.response?.status,
+      statusText: err.response?.statusText,
+      data: err.response?.data,
+      headers: err.response?.headers
+    });
+  }
+}
+
+testBetfairAPI();
 // 🎯 Fetch live cricket markets only
 router.get('/live/cricket', async (req, res) => {
   try {
